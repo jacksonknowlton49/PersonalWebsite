@@ -1,0 +1,6 @@
+saveExact: true
+strictPeerDependencies: true
+
+allowBuilds:
+  '@parcel/watcher': true
+  unrs-resolver: true

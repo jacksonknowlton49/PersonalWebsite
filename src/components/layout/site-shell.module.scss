@@ -1,0 +1,48 @@
+@layer theme, base, components, utilities;
+
+@layer components {
+  .container {
+    width: min(var(--content-width), calc(100% - 3rem));
+    margin-inline: auto;
+  }
+
+  .mark {
+    display: grid;
+    width: 2.25rem;
+    height: 2.25rem;
+    place-items: center;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: var(--brand);
+    font-family: Georgia, serif;
+    font-size: 1.5rem;
+  }
+
+  .navLink {
+    padding: 0.65rem 1rem;
+    border-radius: 2rem;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+
+    &:hover,
+    &[aria-current='page'] {
+      background: #e9ece3;
+      color: var(--text);
+    }
+  }
+
+  .skipLink {
+    position: absolute;
+    z-index: 10;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.75rem 1rem;
+    transform: translateY(-200%);
+    border: 1px solid var(--border);
+    background: var(--surface);
+
+    &:focus {
+      transform: translateY(0);
+    }
+  }
+}
