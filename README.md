@@ -4,14 +4,14 @@ A small, typed foundation built with React, Next.js App Router, Tailwind CSS, an
 
 ## Getting started
 
-Use Node.js 24 LTS and pnpm 11.25.0 (the package manager is pinned in `package.json`). With Corepack installed, run `corepack enable` to expose pnpm; alternatively install the pinned pnpm release using your usual Node tooling.
+Use Node.js 24 LTS and npm 11.19.1 (the package manager is recorded in `package.json`). npm is included with Node.js; Corepack is not required.
 
 ```sh
-pnpm install --frozen-lockfile
-pnpm dev
+npm ci
+npm run dev
 ```
 
-Open http://localhost:3000. For production, run `pnpm build` followed by `pnpm start`.
+Open http://localhost:3000. For production, run `npm run build` followed by `npm start`.
 
 Development and production explicitly use Next.js's supported Webpack bundler. Turbopack's Sass worker exits before connecting in the current Windows runtime, including outside the sandbox. Keeping both commands on the same bundler makes the verified build reproducible; reevaluate Turbopack when upgrading the runtime or framework.
 
@@ -44,7 +44,7 @@ Components stay server components by default. Add `'use client'` only where brow
 2. Export `metadata` to set its title and description.
 3. Add its link to `src/config/site.ts` if it belongs in main navigation.
 4. Compose existing UI components; keep page-specific components beside that route.
-5. Run `pnpm check` and `pnpm build`.
+5. Run `npm run check` and `npm run build`.
 
 Typed routes check internal links against Next.js's generated route definitions. Keep navigation matching exact for these top-level pages; deliberately extend matching when nested sections are introduced.
 
@@ -59,12 +59,14 @@ The shell includes semantic landmarks, a keyboard skip link, visible focus indic
 ## Quality checks
 
 ```sh
-pnpm check         # Formatting, ESLint (zero warnings), strict TypeScript
-pnpm build         # Production compilation and route prerendering
-pnpm format        # Apply formatting
+npm run check     # Formatting, ESLint (zero warnings), strict TypeScript
+npm run build     # Production compilation and route prerendering
+npm run format    # Apply formatting
 ```
 
-TypeScript enables strict mode, checked indexed access, and exact optional property types. ESLint uses Next.js's accessibility, React, and TypeScript rules. Prettier owns formatting. Dependency versions are exact and `pnpm-lock.yaml` records the complete resolution; commit it and use frozen installs in CI. `pnpm-workspace.yaml` enforces peer compatibility and explicitly allows the native dependency build scripts used by this toolchain. Tooling versions must satisfy Next.js's ESLint plugin peer ranges; upgrade them together.
+TypeScript enables strict mode, checked indexed access, and exact optional property types. ESLint uses Next.js's accessibility, React, and TypeScript rules. Prettier owns formatting. Dependency versions are exact and `package-lock.json` records the complete resolution; commit it and use `npm ci` for reproducible local and CI installs. `.npmrc` saves exact versions for new dependencies and enables strict peer dependency checking during installation. The `allowScripts` field in `package.json` records the native dependency scripts approved for this toolchain. Tooling versions must satisfy Next.js's ESLint plugin peer ranges; upgrade them together.
+
+Use `npm install <package>` for runtime dependencies and `npm install --save-dev <package>` for development tools. Commit both `package.json` and `package-lock.json` after dependency changes.
 
 The placeholder content has no business logic requiring a unit-test framework. As behavior grows, add focused tests around that behavior and browser tests for critical journeys. For the base, verify both routes, browser back/forward navigation, direct URL entry, keyboard focus, and narrow layouts before release.
 

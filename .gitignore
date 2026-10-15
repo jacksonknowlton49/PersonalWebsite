@@ -1,7 +1,6 @@
 node_modules/
 .next/
 out/
-.pnpm-store/
 *.tsbuildinfo
 next-env.d.ts
 .env*
@@ -11,3 +10,11 @@ Thumbs.db
 coverage/
 playwright-report/
 test-results/
+
+# OpenNext
+.open-next
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
