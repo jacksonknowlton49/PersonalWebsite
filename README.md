@@ -70,8 +70,19 @@ Use `npm install <package>` for runtime dependencies and `npm install --save-dev
 
 The placeholder content has no business logic requiring a unit-test framework. As behavior grows, add focused tests around that behavior and browser tests for critical journeys. For the base, verify both routes, browser back/forward navigation, direct URL entry, keyboard focus, and narrow layouts before release.
 
+## Cloudflare Workers
+
+The OpenNext adapter packages the Next.js build for Cloudflare Workers. Keep Next.js and `eslint-config-next` on the same version and within the adapter's declared peer dependency range. OpenNext `1.20.12` requires Next.js `>=15.5.28 <16 || >=16.4.1`.
+
+```sh
+npm run preview   # Build and preview in the Workers runtime
+npm run deploy    # Build and deploy to Cloudflare
+```
+
+For connected Cloudflare Workers builds, use `npm ci` for installation and `npm run deploy` as the deploy command. That script builds both Next.js and the Worker. `wrangler.jsonc` must retain `nodejs_compat`; see the [OpenNext setup guide](https://opennext.js.org/cloudflare/get-started).
+
 ## Scope
 
-No backend, authentication, analytics, external fonts, or deployment provider is configured. Add environment variables only when needed; local `.env*` files are ignored, and an `.env.example` may be tracked. Only `NEXT_PUBLIC_` variables are exposed to browser code; never use that prefix for secrets.
+No backend, authentication, analytics, or external fonts are configured. Add environment variables only when needed; local `.env*` files are ignored, and an `.env.example` may be tracked. Only `NEXT_PUBLIC_` variables are exposed to browser code; never use that prefix for secrets.
 
 The existing root-level `Resume.pdf` is retained as supplied. Files are publicly served only when explicitly placed under `public/`.

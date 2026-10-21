@@ -8,7 +8,9 @@
   },
   "allowScripts": {
     "@parcel/watcher": true,
-    "unrs-resolver": true
+    "unrs-resolver": true,
+    "esbuild": true,
+    "workerd": true
   },
   "scripts": {
     "build": "next build --webpack",
@@ -26,7 +28,7 @@
   },
   "dependencies": {
     "@opennextjs/cloudflare": "1.20.12",
-    "next": "16.4.0",
+    "next": "16.4.1",
     "react": "19.3.0",
     "react-dom": "19.3.0"
   },
@@ -36,7 +38,7 @@
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "eslint": "9.39.5",
-    "eslint-config-next": "16.4.0",
+    "eslint-config-next": "16.4.1",
     "eslint-config-prettier": "10.1.8",
     "postcss": "8.5.30",
     "prettier": "3.9.10",
