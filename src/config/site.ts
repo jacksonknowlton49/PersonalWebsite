@@ -1,10 +1,14 @@
-import type { Route } from 'next';
-
 export const site = {
-  name: 'Portfolio',
-  description: 'A space for ideas, projects, and the person behind them.',
-  navigation: [
-    { href: '/', label: 'Home' },
-    { href: '/about', label: 'About' },
-  ] satisfies ReadonlyArray<{ href: Route; label: string }>,
+  name: 'Jackson Knowlton',
+  description:
+    'Jackson Knowlton — Full Stack Developer specializing in fast, responsive, and visually engaging web experiences.',
+  email: 'jacksonrknowlton@gmail.com',
+  phone: '+1 (913) 222-9283',
+  phoneHref: 'tel:+19132229283',
+  location: 'Kansas City, MO',
+  resume: '/Resume.pdf',
+  social: { linkedin: null, github: null } as {
+    linkedin: string | null;
+    github: string | null;
+  },
 } as const;

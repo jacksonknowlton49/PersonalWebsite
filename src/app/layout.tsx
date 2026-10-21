@@ -16,6 +16,12 @@ export default function RootLayout({
 }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en">
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=code_xml,download,schedule,task_alt,arrow_right_alt,view_cozy,send,mail,call,location_on"
+          rel="stylesheet"
+        />
+      </head>
       <body>
         <SiteShell>{children}</SiteShell>
       </body>

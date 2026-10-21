@@ -1,47 +1,19 @@
-import Link from 'next/link';
 import type { ReactNode } from 'react';
-
-import { site } from '@/config/site';
-import { SiteNavigation } from './site-navigation';
-import styles from './site-shell.module.scss';
+import { SiteHeader } from './site-header';
 
 export function SiteShell({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <div className="flex min-h-dvh flex-col">
-      <a href="#main-content" className={styles.skipLink}>
+    <div className="mx-auto w-[calc(100%-40px)] max-w-[1392px] pb-6 sm:w-[calc(100%-64px)] lg:w-[calc(100%-96px)] lg:pb-16">
+      <a
+        href="#main-content"
+        className="absolute top-3 left-3 z-10 -translate-y-[200%] rounded-lg border border-accent bg-canvas px-5 py-3 focus:translate-y-0"
+      >
         Skip to content
       </a>
-      <header className="border-b border-line">
-        <div
-          className={`${styles.container} flex min-h-24 flex-wrap items-center justify-between gap-4 py-5`}
-        >
-          <Link
-            href="/"
-            className="flex items-center gap-3 text-lg font-semibold tracking-tight"
-          >
-            <span aria-hidden="true" className={styles.mark}>
-              p.
-            </span>
-            {site.name}
-          </Link>
-          <SiteNavigation />
-        </div>
-      </header>
-      <main
-        id="main-content"
-        tabIndex={-1}
-        className={`${styles.container} flex-1 py-16 sm:py-24`}
-      >
+      <SiteHeader />
+      <main id="main-content" tabIndex={-1} className="focus:outline-none">
         {children}
       </main>
-      <footer className="border-t border-line">
-        <div
-          className={`${styles.container} flex flex-wrap justify-between gap-3 py-7 text-sm text-muted`}
-        >
-          <p>{site.name}</p>
-          <p>A little room for what comes next.</p>
-        </div>
-      </footer>
     </div>
   );
 }
