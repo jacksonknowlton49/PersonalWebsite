@@ -23,7 +23,7 @@ export function ActionLink(props: ActionLinkProps) {
     compact = false,
     className = '',
   } = props;
-  const classes = `inline-flex shrink-0 items-center justify-center gap-2.5 rounded-[14px] border leading-[1.4] whitespace-nowrap transition-colors motion-reduce:transition-none hover:border-[#b7a9fb] ${compact ? 'min-h-11 px-3 py-2.5 text-[13px] sm:min-h-[52px] sm:px-[25px] sm:py-3 sm:text-lg' : 'min-h-[58px] px-6 py-4 text-[17px] xl:min-h-[66px] xl:px-[34px] xl:py-[18px] xl:text-xl'} ${variant === 'primary' ? 'border-[#9376ed] bg-linear-[100deg,#b667ed,#5958ee] shadow-[inset_0_0_3px_#ffffff38] hover:brightness-110' : 'border-line bg-transparent hover:bg-accent/10'} ${className}`;
+  const classes = `action-link ${compact ? 'action-link-compact' : 'action-link-default'} action-link-${variant} ${className}`;
   const content = (
     <>
       {children}
@@ -35,12 +35,12 @@ export function ActionLink(props: ActionLinkProps) {
   );
   if (props.download)
     return (
-      <a href={props.href} download className={classes}>
+      <a href={props.href} download className={classes} data-entrance="action">
         {content}
       </a>
     );
   return (
-    <Link href={props.href} className={classes}>
+    <Link href={props.href} className={classes} data-entrance="action">
       {content}
     </Link>
   );

@@ -6,7 +6,7 @@ export const metadata: Metadata = { title: 'About' };
 
 export default function AboutPage() {
   return (
-    <section className="pt-[25px] pb-[70px]">
+    <section className="pt-6 pb-18">
       <PageIntro eyebrow="About me" title="Hi, I’m Jackson.">
         <p>
           I’m a Full-Stack Developer based in Kansas City, MO, specializing in
